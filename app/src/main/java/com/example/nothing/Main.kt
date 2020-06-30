@@ -1,5 +1,7 @@
 package com.example.nothing
 
+import com.livermor.delegateadapter.delegate.DelegateAdapter
+import com.livermor.delegateadapter.delegate.KDelegateAdapter
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

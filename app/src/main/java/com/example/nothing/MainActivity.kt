@@ -1,16 +1,29 @@
 package com.example.nothing
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.service.notification.NotificationListenerService
-import com.example.nothing.notification.NotificationActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.example.nothing.audiofocus.AudioFocusService
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startActivity(Intent(this, NotificationActivity::class.java))
+    }
+
+    override fun onStart() {
+        super.onStart()
+        startForegroundService(Intent(this, AudioFocusService::class.java))
+    }
+
+    override fun onStop() {
+        super.onStop()
+//        stopService(Intent(this, AudioFocusService::class.java))
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        stopService(Intent(this, AudioFocusService::class.java))
     }
 }

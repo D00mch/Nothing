@@ -4,6 +4,8 @@
     package="com.example.nothing">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".notification.NotificationActivity"/>
+        <activity android:name=".notification.NotificationActivity" />
 
         <service
             android:name=".notification.NotificationListener"
@@ -31,6 +33,12 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".audiofocus.AudioFocusService"
+            android:exported="false">
+        </service>
+
     </application>
 
 </manifest>
